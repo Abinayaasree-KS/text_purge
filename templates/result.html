@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Checker Result</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            background-image: url("/static/images/result2.jpg"); /* Set your image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        body::before {
+            content: "";
+            background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity as needed */
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .header-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-container img {
+            width: 40px; /* Adjust the size as needed */
+            margin-right: 10px;
+            border-radius: 50%; /* Optional: add border-radius for a circular effect */
+        }
+
+        .header-container h3 {
+            color: white; /* Set the color to white */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555555;
+            margin-bottom: 15px;
+        }
+
+        .alert-text {
+            color: red;
+            font-size: 2.5em;            
+            font-weight: bold;
+        }
+
+        .response-text {
+            font-size: 2.5em;            
+            font-weight: bold;
+            color: green;
+        }
+
+        .btn-primary {
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center; /* Center-align images horizontally */
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            width: 150px; /* Adjust the size as needed */
+            border-radius: 10px;
+        }
+
+        .contact-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(14, 13, 13, 0.7); /* Transparent layer */
+            text-align: center;
+            color: #e9e2e2;
+            font-size: 1.2em;
+            z-index: 2; /* Place it above other containers */
+        }
+
+        .container h1 {
+             color: #02595d; /* Use the color code of your choice */
+             margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for the header (website name and logo) -->
+    <div class="header-container">
+        <img src="/static/images/logo.png" alt="Logo">
+        <h3>www.Textpurge</h3>
+    </div>
+
+    <div class="container">
+        <h1>Inbox Guardian Outcome</h1>
+        <p><strong>Your Message:</strong> {{ message }}</p>
+        <p class="{% if response == 'Suspected Spam!:(' %}alert-text{% else %}response-text{% endif %}">{{ response }}</p>
+
+        <div class="image-container">
+            {% if response == 'Suspected Spam!:(' %}
+                <div>
+                    <img src="/static/images/detected.jpg" alt="Spam Image">
+                </div>
+            {% else %}
+                <div>
+                    <img src="/static/images/non_spam.jpg" alt="Non-Spam Image">
+                </div>
+            {% endif %}
+        </div>
+
+        <a href="/" class="btn btn-primary btn-block">Back</a>
+    </div>
+
+    <!-- Container for "Contact us for more info" -->
+    <div class="contact-container">
+        Contact us for more information: Email: textpurge@gmail.com Phone: +91 82485 73963
+    </div>
+
+    <!-- Bootstrap JS and jQuery (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Checker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: rgb(250, 246, 246);
+            background-color: #050505; /* Set your preferred background color */
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* Stack containers vertically */
+        }
+        /* Container for header (website name and logo) */
+        .header-container {
+            display: flex;
+            justify-content: flex-start; /* Align content to the start (left) */
+            align-items: center;
+            padding: 20px;
+            z-index: 2; /* Place it above other containers */
+        }
+        /* Logo image */
+        .logo {
+            width: 40px; /* Adjust the size as needed */
+            margin-right: 10px;
+        }
+        /* Container for background image */
+        .image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place it behind the text container */
+            background-image: url("/static/images/index2.jpg"); /* Set your background image path */
+            background-size: cover;
+            background-position: center;
+        }
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black transparent layer */
+            z-index: 0;
+        }
+        /* Container for text content */
+        .text-container {
+            position: relative; /* Adjust positioning based on your design */
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin: auto; /* Center-align the text container */
+            z-index: 1; /* Place it above the background image container */
+            background-color: rgba(255, 0, 0, 0.5); /* Red transparent layer */
+        }
+        form {
+            margin-top: 20px;
+        }
+        /* Container for certification text at the bottom */
+        .certification-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(73, 61, 61, 0.5); /* Adjust the background color and opacity */
+    text-align: center;
+    z-index: 2; /* Place it above other containers */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Container for header (website name and logo) -->
+    <div class="header-container">
+        <img src="/static/images/logo.png" alt="Logo" class="logo">
+        <h2>www.Textpurge</h2>
+    </div>
+
+    <!-- Container for background image -->
+    <div class="image-container"></div>
+
+    <!-- Container for text content -->
+    <div class="text-container">
+        <h1>Spam Detector</h1>
+        <form action="/check_spam" method="post">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="message" placeholder="Enter your message">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Check</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Container for certification text at the bottom -->
+    <div class="certification-container">
+        <p>Certified by India-Crime Branch Crime Investigation Department</p>
+    </div>
+
+    <!-- Bootstrap JS and jQuery (for Bootstrap functionality) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
